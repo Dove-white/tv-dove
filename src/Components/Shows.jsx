@@ -5,6 +5,7 @@ import {
   AiOutlineArrowRight,
   AiOutlineArrowLeft,
 } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Shows = () => {
   const [posts, setPosts] = useState(null);
@@ -46,26 +47,28 @@ const Shows = () => {
   return (
     <>
       <div className="pt-10 pb-3">
-        <h1 className="text-3xl pl-5 font-semibold md:pl-14">Shows</h1>
+        <h1 className="text-3xl px-5 font-sm md:px-14">Shows</h1>
       </div>
-      <div className="flex justify-around flex-wrap gap-3">
+      <div className="flex justify-between flex-wrap gap-3 px-5 md:px-14">
         {records?.map((item) => (
           <div
             key={item.score}
             className="p-1 shadow-md flex flex-col gap-1 rounded-b-lg mb-10 hover:shadow-md hover:shadow-pink-300 transition-all group"
           >
-            <img
-              src={item?.show.image.medium}
-              alt="tv-dove"
-              className="w-[120px] lg:w-[140px] rounded-t-lg group-hover:rounded-b-lg transition-all"
-            />
+            <Link to={"/" + item?.show.name.replace(" ", "")}>
+              <img
+                src={item?.show.image.medium}
+                alt="tv-dove"
+                className="w-[120px] lg:w-[140px] rounded-t-lg group-hover:rounded-b-lg transition-all cursor-pointer"
+              />
+            </Link>
             <p className="h-10 text-center">{item?.show.name}</p>
             <div className="flex justify-evenly items-center">
-              <i className="hover:text-[red]">
+              <i className="hover:text-[red] cursor-pointer">
                 <AiOutlineHeart />
               </i>
-              <i className="hover:text-[red] flex items-center">
-                <AiOutlineStar /> 6.5
+              <i className="flex items-center cursor-pointer">
+                <AiOutlineStar className="hover:text-[red]" /> 6.5
               </i>
             </div>
           </div>
