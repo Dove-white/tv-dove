@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaSistrix } from "react-icons/fa6";
+import { FaBars, FaSistrix, FaXmark } from "react-icons/fa6";
+import { BiSearch } from "react-icons/bi";
+
+const reloadPage = () => {
+  return location.reload();
+};
 
 const Nav = () => {
   return (
@@ -16,32 +21,54 @@ const Nav = () => {
             </div>
           </div>
         </Link>
-
-        <nav className="hidden md:block">
-          <ul className="text-black flex gap-3 font-[450]">
-            <li className="relative group">
-              <Link to="/">Shows</Link>
-              <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
-            </li>
-            <li className="relative group">
-              <Link to="/about">About Me</Link>
-              <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
-            </li>
-            <li className="relative group">
-              <Link to="/info">Info</Link>
-              <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
-            </li>
-            <li className="relative group">
-              <Link to="/about">Sing In</Link>
-              <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
-            </li>
-            <li className="relative group">
-              <Link to="/about">Log In</Link>
-              <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
-            </li>
-          </ul>
+        <div className="mr-20 md:hidden">
+          <BiSearch
+            id="nav-normal"
+            className="text-pink-500 cursor-pointer text-xl"
+          />
+        </div>
+        <input type="checkbox" className="hidden" id="check" />
+        <label
+          id="nav-icons"
+          htmlFor="check"
+          className="absolute inline-flex top-10 right-8 md:hidden"
+        >
+          <FaBars
+            id="nav-normal"
+            className="text-pink-500 cursor-pointer text-xl"
+          />
+          <FaXmark
+            id="nav-closed"
+            className="text-pink-500 cursor-pointer text-xl hidden"
+          />
+        </label>
+        <nav
+          onClick={reloadPage}
+          id="nav-list"
+          className="text-black flex flex-col items-center gap-3 font-[450] absolute w-[100vw] h-[0] py-0 md:static md:w-auto md:h-auto md:flex-row md:to-white md:justify-between overflow-hidden transition-all bg-gradient-to-b from-white to-pink-500 top-24 left-0"
+        >
+          <li className="list-none relative group">
+            <Link to="/">Shows</Link>
+            <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
+          </li>
+          <li className="list-none relative group">
+            <Link to="/about">About Me</Link>
+            <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
+          </li>
+          <li className="list-none relative group">
+            <Link to="/info">Info</Link>
+            <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
+          </li>
+          <li className="list-none relative group">
+            <Link to="/about">Sing In</Link>
+            <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
+          </li>
+          <li className="list-none relative group">
+            <Link to="/about">Log In</Link>
+            <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
+          </li>
         </nav>
-        <div className="sm:flex hidden">
+        <div className="hidden md:flex">
           <input
             type="search"
             name="search"
@@ -52,9 +79,6 @@ const Nav = () => {
           <button className="bg-pink-500 hover:bg-pink-700 transition-all w-8 flex justify-center items-center rounded-r-lg">
             <FaSistrix className="text-white" />
           </button>
-        </div>
-        <div className="md:hidden">
-          <FaBars className="text-pink-500 cursor-pointer text-xl" />
         </div>
       </div>
     </>

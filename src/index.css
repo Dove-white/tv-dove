@@ -9,3 +9,23 @@
 .text__shadow-black {
   text-shadow: 5px 5px 10px black;
 }
+
+#check:checked ~ #nav-icons #nav-normal {
+  display: none;
+}
+
+#check:checked ~ #nav-icons #nav-closed {
+  display: block;
+}
+
+#check:checked ~ #nav-list {
+  height: 80%;
+  padding: 3rem 0;
+}
+
+@media (min-width: 1024px) {
+  #check:checked ~ #nav-list {
+    height: auto;
+    padding: 0;
+  }
+}
