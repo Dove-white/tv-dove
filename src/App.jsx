@@ -4,17 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import Nav from "./Components/UI/Nav";
 import HomePage from "./Components/HomePage";
 import AboutPage from "./Components/AboutPage";
-import ShowId0 from "./Components/UI/AllShowsInfo/ShowId0";
 import React, { useEffect, useState } from "react";
-import ShowId1 from "./Components/UI/AllShowsInfo/ShowId1";
-import ShowId2 from "./Components/UI/AllShowsInfo/ShowId2";
-import ShowId3 from "./Components/UI/AllShowsInfo/ShowId3";
-import ShowId4 from "./Components/UI/AllShowsInfo/ShowId4";
-import ShowId5 from "./Components/UI/AllShowsInfo/ShowId5";
-import ShowId6 from "./Components/UI/AllShowsInfo/ShowId6";
-import ShowId7 from "./Components/UI/AllShowsInfo/ShowId7";
-import ShowId8 from "./Components/UI/AllShowsInfo/ShowId8";
-import ShowId9 from "./Components/UI/AllShowsInfo/ShowId9";
+import MovieDetails from "./Components/MovieDetails";
 
 function App() {
   const [posts, setPosts] = useState(null);
@@ -52,78 +43,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route>
-          {showId0?.map((item) => (
-            <Route
-              key={item.score}
-              path={"/" + item?.show.name.replace(" ", "")}
-              element={<ShowId0 />}
-            />
-          ))}
-          {showId1?.map((item) => (
-            <Route
-              key={item.score}
-              path={"/" + item?.show.name.replace(" ", "")}
-              element={<ShowId1 />}
-            />
-          ))}
-          {showId2?.map((item) => (
-            <Route
-              key={item.score}
-              path={"/" + item?.show.name.replace(" ", "")}
-              element={<ShowId2 />}
-            />
-          ))}
-          {showId3?.map((item) => (
-            <Route
-              key={item.score}
-              path={"/" + item?.show.name.replace(" ", "")}
-              element={<ShowId3 />}
-            />
-          ))}
-          {showId4?.map((item) => (
-            <Route
-              key={item.score}
-              path={"/" + item?.show.name.replace(" ", "")}
-              element={<ShowId4 />}
-            />
-          ))}
-          {showId5?.map((item) => (
-            <Route
-              key={item.score}
-              path={"/" + item?.show.name.replace(" ", "")}
-              element={<ShowId5 />}
-            />
-          ))}
-          {showId6?.map((item) => (
-            <Route
-              key={item.score}
-              path={"/" + item?.show.name.replace(" ", "")}
-              element={<ShowId6 />}
-            />
-          ))}
-          {showId7?.map((item) => (
-            <Route
-              key={item.score}
-              path={"/" + item?.show.name.replace(" ", "")}
-              element={<ShowId7 />}
-            />
-          ))}
-          {showId8?.map((item) => (
-            <Route
-              key={item.score}
-              path={"/" + item?.show.name.replace(" ", "")}
-              element={<ShowId8 />}
-            />
-          ))}
-          {showId9?.map((item) => (
-            <Route
-              key={item.score}
-              path={"/" + item?.show.name.replace(" ", "")}
-              element={<ShowId9 />}
-            />
-          ))}
-        </Route>
+        <Route path="details/:id" element={<MovieDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

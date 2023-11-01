@@ -19,7 +19,7 @@
 }
 
 #check:checked ~ #nav-list {
-  height: 80%;
+  height: 100vh;
   padding: 3rem 0;
 }
 

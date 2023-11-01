@@ -30,18 +30,23 @@ const Shows = () => {
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 4;
+  const recordsPerPage = 3;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const records = posts?.slice(firstIndex, lastIndex);
-
   const nPage = Math.ceil((posts?.length || 0) / recordsPerPage); // Use Math.ceil to get the total pages
+  const numbers = Array.from({ length: nPage }, (_, index) => index + 1);
+
   const prevPage = () => {
     if (currentPage !== 1) setCurrentPage(currentPage - 1);
   };
 
   const nextPage = () => {
     if (currentPage !== nPage) setCurrentPage(currentPage + 1);
+  };
+
+  const changeCPage = (id) => {
+    setCurrentPage(id);
   };
 
   return (
@@ -55,7 +60,7 @@ const Shows = () => {
             key={item.score}
             className="p-1 shadow-md flex flex-col gap-1 rounded-b-lg mb-10 hover:shadow-md hover:shadow-pink-300 transition-all group"
           >
-            <Link to={"/" + item?.show.name.replace(" ", "")}>
+            <Link to={`/details/${item?.show.id}`}>
               <img
                 src={item?.show.image.medium}
                 alt="tv-dove"
@@ -80,19 +85,28 @@ const Shows = () => {
           onClick={prevPage}
         >
           Prev{" "}
-          <AiOutlineArrowLeft className="h-10 w-10 text-pink-500 transition-all group-hover:-translate-x-1" />
+          <AiOutlineArrowLeft className="h-8 w-8 text-pink-500 transition-all group-hover:-translate-x-1" />
         </button>
-
-        <p className="h-6 w-6 bg-pink-500 text-white text-center">
-          {currentPage}
-        </p>
+        {numbers?.map((num, index) => (
+          <button
+            key={index}
+            onClick={() => changeCPage(num)}
+            className={
+              currentPage === index + 1
+                ? "h-6 w-6 bg-pink-500 text-white text-center"
+                : "h-6 w-6 bg-gradient-to-r from-gray-300 to-gray-500 text-black text-center"
+            }
+          >
+            {num}
+          </button>
+        ))}
         <button
           className=" p-3  text-black flex items-center group"
           onClick={nextPage}
         >
           {" "}
           Next{" "}
-          <AiOutlineArrowRight className="h-10 w-10 text-pink-500 transition-all group-hover:translate-x-1" />
+          <AiOutlineArrowRight className="h-8 w-8 text-pink-500 transition-all group-hover:translate-x-1" />
         </button>
       </div>
     </>
