@@ -30,7 +30,7 @@ const Shows = () => {
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 3;
+  const recordsPerPage = 4;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const records = posts?.slice(firstIndex, lastIndex);
@@ -50,8 +50,9 @@ const Shows = () => {
   };
 
   return (
+    //flex justify-center md:justify-between flex-wrap
     <>
-      <div className="flex justify-center md:justify-between flex-wrap gap-3 sm:gap-16 px-5 md:px-14">
+      <div className="flex flex-wrap justify-center sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-16 px-5 md:px-14">
         {records?.map((item) => (
           <div
             key={item.score}
@@ -61,7 +62,7 @@ const Shows = () => {
               <img
                 src={item?.show.image.medium}
                 alt="tv-dove"
-                className="rounded-t-lg group-hover:rounded-b-lg transition-all cursor-pointer"
+                className="sm:w-full rounded-t-lg group-hover:rounded-b-lg transition-all cursor-pointer"
               />
             </Link>
             <p className="h-10 text-center">{item?.show.name}</p>
