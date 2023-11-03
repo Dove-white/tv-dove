@@ -61,7 +61,7 @@ const Shows = () => {
               <img
                 src={item?.show.image.medium}
                 alt="tv-dove"
-                className="w-[120px] lg:w-[140px] rounded-t-lg group-hover:rounded-b-lg transition-all cursor-pointer"
+                className="rounded-t-lg group-hover:rounded-b-lg transition-all cursor-pointer"
               />
             </Link>
             <p className="h-10 text-center">{item?.show.name}</p>
