@@ -51,16 +51,13 @@ const Shows = () => {
 
   return (
     <>
-      <div className="pt-10 pb-3">
-        <h1 className="text-3xl px-5 font-sm md:px-14">Shows</h1>
-      </div>
       <div className="flex justify-between flex-wrap gap-3 px-5 md:px-14">
         {records?.map((item) => (
           <div
             key={item.score}
             className="p-1 shadow-md flex flex-col gap-1 rounded-b-lg mb-10 hover:shadow-md hover:shadow-pink-300 transition-all group"
           >
-            <Link to={`/details/${item?.show.id}`}>
+            <Link to={`/tv-dove/details/${item?.show.id}`}>
               <img
                 src={item?.show.image.medium}
                 alt="tv-dove"
@@ -79,7 +76,7 @@ const Shows = () => {
           </div>
         ))}
       </div>
-      <div className="flex justify-center items-center mb-2">
+      <div className="flex justify-center items-center mb-2 ease-in duration-300">
         <button
           className=" p-3  text-black mr-1 flex flex-row-reverse items-center group"
           onClick={prevPage}

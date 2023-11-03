@@ -11,7 +11,7 @@ const Nav = () => {
   return (
     <>
       <div className="flex justify-between py-5 px-10 items-center">
-        <Link to="/">
+        <Link to="/tv-dove/">
           <div className="bg-gradient-to-r from-pink-500 to-gray-500 relative w-[60px] h-[60px] rounded-full flex items-center justify-center group">
             <div className="absolute -left-[10px] -top-[5px] bg-pink-500 w-[30px] h-[30px] rounded-full flex items-center justify-center text-white font-bold text__shadow-red group-hover:top-1/2 group-hover:-translate-y-1/2 transition-all">
               TV
@@ -48,23 +48,23 @@ const Nav = () => {
           className="text-black flex flex-col items-center gap-3 font-[450] absolute w-[100vw] h-[0] py-0 md:static md:w-auto md:h-auto md:flex-row md:to-white md:justify-between overflow-hidden transition-all bg-gradient-to-b from-white to-pink-500 top-24 left-0"
         >
           <li className="list-none relative group">
-            <Link to="/">Shows</Link>
+            <Link to="/tv-dove/">Shows</Link>
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
           <li className="list-none relative group">
-            <Link to="/about">About Me</Link>
+            <Link to="/tv-dove/about">About Me</Link>
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
           <li className="list-none relative group">
-            <Link to="/info">Info</Link>
+            <Link to="/tv-dove/info">Info</Link>
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
           <li className="list-none relative group">
-            <Link to="/about">Sing In</Link>
+            <Link to="/tv-dove/about">Sing In</Link>
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
           <li className="list-none relative group">
-            <Link to="/about">Log In</Link>
+            <Link to="/tv-dove/about">Log In</Link>
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
         </nav>

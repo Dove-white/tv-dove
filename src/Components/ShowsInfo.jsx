@@ -17,18 +17,18 @@ const ShowsInfo = ({ movies }) => {
             <h1 className="text-3xl px-5 font-sm md:px-14">
               {item?.show.name}
             </h1>
-            <Link to="../">&#60; Back</Link>
+            <Link to="../tv-dove/">&#60; Back</Link>
           </div>
           <article className="px-5 md:px-14 lg:flex lg:gap-10">
             <figure className="sm:flex gap-4 lg:gap-10">
-              <div className="mb-6 sm:mb-10 lg:mb-0 group transition-all">
+              <div className="mb-6 sm:mb-10 lg:mb-0 group transition-all icon__group">
                 <img
                   src={item?.show.image.original}
                   alt="tv-dove"
                   className="w-[250px]"
                 />
-                <div className="bg-pink-500 h-[30px] md:h-[50px] w-[250px] flex justify-center items-center md:group-hover:-translate-y-[50px] group-hover:-translate-y-[30px] transition-all group-hover:bg-[#ffffff80]">
-                  <i className="hover:text-[red] cursor-pointer text-2xl md:text-3xl text-white group-hover:text-black">
+                <div className="bg-pink-500 h-[30px] md:h-[50px] w-[250px] flex justify-center items-center md:group-hover:-translate-y-[50px] group-hover:-translate-y-[30px] transition-all icon__pink-gradient">
+                  <i className="hover:text-[red] cursor-pointer text-2xl md:text-3xl text-white">
                     <AiOutlineHeart />
                   </i>
                 </div>

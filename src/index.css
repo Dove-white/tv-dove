@@ -29,3 +29,14 @@
     padding: 0;
   }
 }
+
+.icon__group:hover {
+  .icon__pink-gradient {
+    background: rgb(195, 34, 145);
+    background: linear-gradient(
+      0deg,
+      rgba(195, 34, 145, 1) 0%,
+      rgba(0, 0, 0, 0.09858194986979163) 81%
+    );
+  }
+}
