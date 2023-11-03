@@ -51,7 +51,7 @@ const Shows = () => {
 
   return (
     <>
-      <div className="flex justify-between flex-wrap gap-3 px-5 md:px-14">
+      <div className="flex justify-center md:justify-between flex-wrap gap-3 sm:gap-16 px-5 md:px-14">
         {records?.map((item) => (
           <div
             key={item.score}
