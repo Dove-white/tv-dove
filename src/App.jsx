@@ -6,6 +6,7 @@ import HomePage from "./Components/HomePage";
 import AboutPage from "./Components/AboutPage";
 import React, { useEffect, useState } from "react";
 import MovieDetails from "./Components/MovieDetails";
+import Brolly from "./Components/Page/BrollyPage";
 
 function App() {
   const [posts, setPosts] = useState(null);
@@ -35,6 +36,7 @@ function App() {
         <Route path="/tv-dove/" element={<HomePage />} />
         <Route path="/tv-dove/about" element={<AboutPage />} />
         <Route path="/tv-dove/details/:id" element={<MovieDetails />} />
+        <Route path="/tv-dove/privet" element={<Brolly />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
