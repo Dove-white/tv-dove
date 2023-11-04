@@ -19,7 +19,7 @@ const Brolly = () => {
   };
 
   return (
-    <main className="">
+    <main className="overflow-hidden">
       <section
         className="py-[6rem] text-black px-[1.4rem] md:py-[0rem] md:pb-40 md:flex items-center lg:px-20 h-[100vh]"
         style={divStyle}
