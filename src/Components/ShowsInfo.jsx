@@ -97,7 +97,10 @@ const ShowsInfo = ({ movies }) => {
                   </span>
                 </li>
                 <li>
-                  Official site: <a href="" className="text-pink-500"></a>
+                  Official site:{" "}
+                  <Link to="/tv-dove/privet" className="text-pink-500">
+                    brolly
+                  </Link>
                 </li>
               </ul>
             </figure>
