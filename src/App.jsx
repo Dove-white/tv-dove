@@ -6,10 +6,12 @@ import HomePage from "./Components/HomePage";
 import AboutPage from "./Components/AboutPage";
 import React, { useEffect, useState } from "react";
 import MovieDetails from "./Components/MovieDetails";
-import Brolly from "./Components/Page/BrollyPage";
+import Brolly from "./Components/Pages/BrollyPage";
+import SimpleCalculator from "./Components/Pages/SimpleCalculator";
 
 function App() {
   const [posts, setPosts] = useState(null);
+
   const url = "https://api.tvmaze.com/search/shows?q=girls";
 
   useEffect(() => {
@@ -29,14 +31,23 @@ function App() {
       });
   }, []);
 
+  const [query, setQuery] = useState("");
+
+  const inputSetQuery = (e) => setQuery(e.target.value);
+
+  const movieData = posts?.filter((user) =>
+    user.show.name.toLowerCase().includes(query)
+  );
+
   return (
     <>
-      <Nav />
+      <Nav setQuery={inputSetQuery} />
       <Routes>
-        <Route path="/tv-dove/" element={<HomePage />} />
+        <Route path="/tv-dove/" element={<HomePage movies={movieData} />} />
         <Route path="/tv-dove/about" element={<AboutPage />} />
         <Route path="/tv-dove/details/:id" element={<MovieDetails />} />
         <Route path="/tv-dove/privet" element={<Brolly />} />
+        <Route path="/tv-dove/calculator" element={<SimpleCalculator />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

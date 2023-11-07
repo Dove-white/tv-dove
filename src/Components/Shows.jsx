@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   AiOutlineHeart,
   AiOutlineStar,
@@ -7,34 +7,14 @@ import {
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-const Shows = () => {
-  const [posts, setPosts] = useState(null);
-  const url = "https://api.tvmaze.com/search/shows?q=girls";
-
-  useEffect(() => {
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Request failed with status: " + response.status);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Data fetched:", data);
-        setPosts(data);
-      })
-      .catch((error) => {
-        console.error("Fetch error: ", error);
-      });
-  }, []);
-
+const Shows = ({ movies }) => {
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 4;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
-  const records = posts?.slice(firstIndex, lastIndex);
-  const nPage = Math.ceil((posts?.length || 0) / recordsPerPage); // Use Math.ceil to get the total pages
+  const records = movies?.slice(firstIndex, lastIndex);
+  const nPage = Math.ceil((movies?.length || 0) / recordsPerPage); // Use Math.ceil to get the total pages
   const numbers = Array.from({ length: nPage }, (_, index) => index + 1);
 
   const prevPage = () => {
@@ -55,7 +35,7 @@ const Shows = () => {
       <div className="flex flex-wrap justify-center sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-16 px-5 md:px-14">
         {records?.map((item) => (
           <div
-            key={item.score}
+            key={item.show.id}
             className="p-1 shadow-md flex flex-col gap-1 rounded-b-lg mb-10 hover:shadow-md hover:shadow-pink-300 transition-all group"
           >
             <Link to={`/tv-dove/details/${item?.show.id}`}>

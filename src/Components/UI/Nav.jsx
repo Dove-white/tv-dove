@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaSistrix, FaXmark } from "react-icons/fa6";
 import { BiSearch } from "react-icons/bi";
@@ -7,7 +7,27 @@ const reloadPage = () => {
   return location.reload();
 };
 
-const Nav = () => {
+const Nav = (props) => {
+  const [posts, setPosts] = useState(null);
+  const url = "https://api.tvmaze.com/search/shows?q=girls";
+
+  useEffect(() => {
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Request failed with status: " + response.status);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Data fetched:", data);
+        setPosts(data);
+      })
+      .catch((error) => {
+        console.error("Fetch error: ", error);
+      });
+  }, []);
+
   return (
     <>
       <div className="flex justify-between py-5 px-10 items-center">
@@ -56,15 +76,15 @@ const Nav = () => {
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
           <li className="list-none relative group">
-            <Link to="/tv-dove/info">Info</Link>
+            <Link to="/tv-dove/about">Info</Link>
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
           <li className="list-none relative group">
-            <Link to="/tv-dove/about">Sing In</Link>
+            <Link to="/tv-dove/about">My Contact</Link>
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
           <li className="list-none relative group">
-            <Link to="/tv-dove/about">Log In</Link>
+            <Link to="/tv-dove/">Site</Link>
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
         </nav>
@@ -75,6 +95,7 @@ const Nav = () => {
             id="0"
             placeholder="Search"
             className="rounded-l-lg w-26 outline-none p-[2px] pl-[4px] border border-black border-r-0 text-black"
+            onChange={props.setQuery}
           />
           <button className="bg-pink-500 hover:bg-pink-700 transition-all w-8 flex justify-center items-center rounded-r-lg">
             <FaSistrix className="text-white" />
