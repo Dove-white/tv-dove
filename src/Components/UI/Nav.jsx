@@ -28,6 +28,9 @@ const Nav = (props) => {
       });
   }, []);
 
+  const [seach, setSeach] = useState(false)
+  const [seachIcon, setSeachIcon] = useState(true)
+
   return (
     <>
       <div className="flex justify-between py-5 px-10 items-center">
@@ -41,14 +44,15 @@ const Nav = (props) => {
             </div>
           </div>
         </Link>
-        <div className="mr-20 md:hidden">
+        {seachIcon && <div className="mr-20 md:hidden">
           <BiSearch
             id="nav-normal"
             className="text-pink-500 cursor-pointer text-xl"
+            onClick={() => { setSeach(true); setSeachIcon(false) }}
           />
-        </div>
+        </div>}
         <input type="checkbox" className="hidden" id="check" />
-        <label
+        {seachIcon && <label
           id="nav-icons"
           htmlFor="check"
           className="absolute inline-flex top-10 right-8 md:hidden"
@@ -61,7 +65,7 @@ const Nav = (props) => {
             id="nav-closed"
             className="text-pink-500 cursor-pointer text-xl hidden"
           />
-        </label>
+        </label>}
         <nav
           onClick={reloadPage}
           id="nav-list"
@@ -84,7 +88,7 @@ const Nav = (props) => {
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
           <li className="list-none relative group">
-            <Link to="/tv-dove/">Site</Link>
+            <Link to="/tv-dove/calculator">Video Library</Link>
             <span className="absolute left-0 -bottom-[1px] w-0 group-hover:w-[100%] h-[2px] rounded-sm bg-gradient-to-r from-pink-500 to-gray-500 z-10 transition-all"></span>
           </li>
         </nav>
@@ -101,6 +105,19 @@ const Nav = (props) => {
             <FaSistrix className="text-white" />
           </button>
         </div>
+        {seach && <div className="flex md:hidden">
+          <input
+            type="search"
+            name="search"
+            id="0"
+            placeholder="Search"
+            className="rounded-l-lg w-26 outline-none p-[2px] pl-[4px] border border-black border-r-0 text-black"
+            onChange={props.setQuery}
+          />
+          <button className="bg-pink-500 hover:bg-pink-700 transition-all w-8 flex justify-center items-center rounded-r-lg" onClick={() => { setSeach(false); setSeachIcon(true) }}>
+            <FaSistrix className="text-white" />
+          </button>
+        </div>}
       </div>
     </>
   );

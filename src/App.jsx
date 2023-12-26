@@ -7,7 +7,8 @@ import AboutPage from "./Components/AboutPage";
 import React, { useEffect, useState } from "react";
 import MovieDetails from "./Components/MovieDetails";
 import Brolly from "./Components/Pages/BrollyPage";
-import SimpleCalculator from "./Components/Pages/SimpleCalculator";
+// import SimpleCalculator from "./Components/Pages/SimpleCalculator";
+import VHome from "./Components/VideoLibrary/VHome";
 
 function App() {
   const [posts, setPosts] = useState(null);
@@ -36,7 +37,7 @@ function App() {
   const inputSetQuery = (e) => setQuery(e.target.value);
 
   const movieData = posts?.filter((user) =>
-    user.show.name.toLowerCase().includes(query)
+    user.show.name.toLowerCase().includes(query) && user.show.id !== 67594
   );
 
   return (
@@ -47,7 +48,7 @@ function App() {
         <Route path="/tv-dove/about" element={<AboutPage />} />
         <Route path="/tv-dove/details/:id" element={<MovieDetails />} />
         <Route path="/tv-dove/privet" element={<Brolly />} />
-        <Route path="/tv-dove/calculator" element={<SimpleCalculator />} />
+        <Route path="/tv-dove/calculator" element={<VHome />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

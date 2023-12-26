@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const Shows = ({ movies }) => {
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 4;
+  const recordsPerPage = 5;
   const lastIndex = currentPage * recordsPerPage;
   const firstIndex = lastIndex - recordsPerPage;
   const records = movies?.slice(firstIndex, lastIndex);
@@ -32,7 +32,7 @@ const Shows = ({ movies }) => {
   return (
     //flex justify-center md:justify-between flex-wrap
     <>
-      <div className="flex flex-wrap justify-center sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-16 px-5 md:px-14">
+      <div className="flex flex-wrap justify-center sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-16 px-5 md:px-14">
         {records?.map((item) => (
           <div
             key={item.show.id}
